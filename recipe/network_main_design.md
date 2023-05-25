@@ -36,8 +36,8 @@ TRUNCATE TABLE accounts, posts RESTART IDENTITY;
 -- Below this line there should only be `INSERT` statements.
 -- Replace these statements with your own seed data.
 
-INSERT INTO accounts (email, username) VALUES ('email1@gmail.com', 'email1');
-INSERT INTO accounts (email, username) VALUES ('email23@gmail.com', 'email23');
+INSERT INTO accounts (email, username) VALUES ('email1@gmail.com', 'user_name_1');
+INSERT INTO accounts (email, username) VALUES ('email23@gmail.com', 'user_name_23');
 
 
 
@@ -220,7 +220,7 @@ class PostRepository
     # Returns nothing (only deletes the record)
   end
 
-  def update(account)
+  def update(post)
     # Executes the SQL;
     # UPDATE posts SET title = $1, contents= $2, views = $3, account_id =$4 WHERE id = $5;
 
@@ -248,7 +248,7 @@ repo = AccountRepository.new
 acc = repo.all
 acc.length # => 2
 acc.first.email # => 'email1@gmail.com'
-acc.first.username # => 'email1'
+acc.first.username # => 'user_name_1'
 
 # 2
 # find with id 2
@@ -258,9 +258,9 @@ repo = AccountRepository.new
 acc = repo.find(2)
 acc.length # => 1
 acc.first.email # => 'email23@gmail.com'
-acc.first.username # => 'email23'
+acc.first.username # => 'user_name_23'
 
-# 1
+# 3
 # create new account
 
 repo = AccountRepository.new
@@ -278,7 +278,7 @@ last_acc.username # => 'email56'
 
 
 
-# 2
+# 4
 # delete
 
 repo = AccountRepository.new
@@ -291,6 +291,7 @@ all_accs = repo.all
 all_accs.length # => 1
 all_accs.first.id # => '2'
 
+#5
 # update
 repo = AccountRepository.new
 
